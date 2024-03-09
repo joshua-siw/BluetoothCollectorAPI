@@ -15,6 +15,10 @@ namespace BluetoothCollectorAPI.WebApi.Controllers.v1
         [HttpPost]
         public async Task<BaseResult<AuthenticationResponse>> Authenticate(AuthenticationRequest request)
             => await accountServices.Authenticate(request);
+        
+        [HttpPost]
+        public async Task<BaseResult<AuthenticationResponse>> Logout(LogoutRequest request)
+            => await accountServices.Logout(request);
 
         [HttpPut, Authorize]
         public async Task<BaseResult> ChangeUserName(ChangeUserNameRequest model)
@@ -27,8 +31,8 @@ namespace BluetoothCollectorAPI.WebApi.Controllers.v1
         [HttpPost]
         public async Task<BaseResult<AuthenticationResponse>> Start()
         {
-            var gostUsername = await accountServices.RegisterGostAccount();
-            return await accountServices.AuthenticateByUserName(gostUsername.Data);
+            var guestUsername = await accountServices.RegisterGuestAccount();
+            return await accountServices.AuthenticateByUserName(guestUsername.Data);
         }
     }
 }

@@ -7,11 +7,12 @@ namespace BluetoothCollectorAPI.Application.Interfaces.UserInterfaces
 {
     public interface IAccountServices
     {
-        Task<BaseResult<string>> RegisterGostAccount();
+        Task<BaseResult<string>> RegisterGuestAccount();
         Task<BaseResult> ChangePassword(ChangePasswordRequest model);
         Task<BaseResult> ChangeUserName(ChangeUserNameRequest model);
         Task<BaseResult<AuthenticationResponse>> Authenticate(AuthenticationRequest request);
         Task<BaseResult<AuthenticationResponse>> AuthenticateByUserName(string username);
+        Task<BaseResult<AuthenticationResponse>> Logout(LogoutRequest request);
 
     }
 }
