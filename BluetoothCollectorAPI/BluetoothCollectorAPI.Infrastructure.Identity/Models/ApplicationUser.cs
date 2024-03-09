@@ -9,7 +9,7 @@ namespace BluetoothCollectorAPI.Infrastructure.Identity.Models
         {
             Created = DateTime.Now;
         }
-        public string Email { get; set; }
+        public string Name { get; set; }
         public DateTime Created { get; set; }
     }
 }

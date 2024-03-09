@@ -14,17 +14,33 @@ namespace BluetoothCollectorAPI.Infrastructure.Identity.Seeds
             {
                 UserName = "Admin",
                 Email = "Admin@Admin.com",
+                Name = "Saman",
                 PhoneNumber = "09304241296",
+                EmailConfirmed = true,
+                PhoneNumberConfirmed = true
+            };
+            var testUser = new ApplicationUser
+            {
+                UserName = "test",
+                Email = "test@test.de",
+                Name = "test",
+                PhoneNumber = "030",
                 EmailConfirmed = true,
                 PhoneNumberConfirmed = true
             };
             if (userManager.Users.All(u => u.Id != defaultUser.Id))
             {
                 var user = await userManager.FindByEmailAsync(defaultUser.Email);
+                var anotherUser= await userManager.FindByEmailAsync(testUser.Email);
                 if (user == null)
                 {
                     await userManager.CreateAsync(defaultUser, "Sam@12345");
                     await userManager.AddToRoleAsync(defaultUser, "Admin");
+                }
+                if (anotherUser == null)
+                {
+                    await userManager.CreateAsync(testUser, "Start123!");
+                    await userManager.AddToRoleAsync(testUser, "Admin");
                 }
 
             }

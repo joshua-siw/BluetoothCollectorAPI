@@ -56,7 +56,7 @@ namespace BluetoothCollectorAPI.Infrastructure.Identity.Services
             {
                 return new BaseResult<AuthenticationResponse>(new Error(ErrorCode.NotFound, translator.GetString(TranslatorMessages.AccountMessages.Account_notfound_with_Email(request.Email)), nameof(request.Email)));
             }
-            var result = await signInManager.PasswordSignInAsync(user.Email, request.Password, false, lockoutOnFailure: false);
+            var result = await signInManager.PasswordSignInAsync(user.Name, request.Password, false, lockoutOnFailure: false);
             if (!result.Succeeded)
             {
                 return new BaseResult<AuthenticationResponse>(new Error(ErrorCode.FieldDataInvalid, translator.GetString(TranslatorMessages.AccountMessages.Invalid_password()), nameof(request.Password)));

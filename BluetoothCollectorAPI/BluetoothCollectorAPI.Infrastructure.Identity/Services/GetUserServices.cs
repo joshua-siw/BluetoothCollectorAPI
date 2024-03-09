@@ -23,6 +23,7 @@ namespace BluetoothCollectorAPI.Infrastructure.Identity.Services
                 .Take(model.PageSize)
                 .Select(p => new UserDto()
                 {
+                    Name = p.Name,
                     Email = p.Email,
                     UserName = p.UserName,
                     PhoneNumber = p.PhoneNumber,
