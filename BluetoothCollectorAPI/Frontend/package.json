@@ -9,6 +9,7 @@
 	"scripts": {
 		"svg": "svgo-viewbox -i ./src/assets",
 		"start": "vite --open",
+		"dev": "vite --port 4000",
 		"build": "vite build",
 		"tsc": "tsc --noEmit --skipLibCheck",
 		"lint": "yarn lint:ts && yarn lint:scss",
