@@ -65,7 +65,7 @@ namespace BluetoothCollectorAPI.Infrastructure.Identity.Services
             var rolesList = await userManager.GetRolesAsync(user).ConfigureAwait(false);
 
             var jwToken = await GenerateJwToken(user);
-
+            var refreshToken = await GenerateRefreshJwToken(user);
             AuthenticationResponse response = new AuthenticationResponse()
             {
                 Id = user.Id.ToString(),
@@ -74,6 +74,8 @@ namespace BluetoothCollectorAPI.Infrastructure.Identity.Services
                 UserName = user.UserName,
                 Roles = rolesList.ToList(),
                 IsVerified = user.EmailConfirmed,
+                RefreshToken = new JwtSecurityTokenHandler().WriteToken(refreshToken),
+                TokenThreshold = jwtSettings.DurationInMinutes
             };
 
             return new BaseResult<AuthenticationResponse>(response);
@@ -90,6 +92,7 @@ namespace BluetoothCollectorAPI.Infrastructure.Identity.Services
             var rolesList = await userManager.GetRolesAsync(user).ConfigureAwait(false);
 
             var jwToken = await GenerateJwToken(user);
+            var refreshToken = await GenerateRefreshJwToken(user);
 
             AuthenticationResponse response = new AuthenticationResponse()
             {
@@ -164,6 +167,27 @@ namespace BluetoothCollectorAPI.Infrastructure.Identity.Services
                 return result.Claims.ToList();
             }
         }
+        
+        private async Task<JwtSecurityToken> GenerateRefreshJwToken(ApplicationUser user)
+        {
+            await userManager.UpdateSecurityStampAsync(user);
 
+            var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Key));
+            var signingCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256);
+
+            var jwtSecurityToken = new JwtSecurityToken(
+                issuer: jwtSettings.Issuer,
+                audience: jwtSettings.Audience,
+                claims: await GetClaimsAsync(),
+                expires: DateTime.UtcNow.AddMinutes(jwtSettings.RefreshTokenDurationInDays),
+                signingCredentials: signingCredentials);
+            return jwtSecurityToken;
+
+            async Task<IList<Claim>> GetClaimsAsync()
+            {
+                var result = await signInManager.ClaimsFactory.CreateAsync(user);
+                return result.Claims.ToList();
+            }
+        }
     }
 }

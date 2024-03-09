@@ -16,8 +16,8 @@ export function* loginEffect(action: AnyAction): AuthSagaEffect {
 		const data = responseData.data.data;
 		const payload = {
 			token: data.jwToken,
-			threshold: data.threshold || 3600,
-			refreshToken: data.refresh_token,
+			threshold: data.tokenThreshold || 3600,
+			refreshToken: data.refreshToken,
 			role: data.roles
 		};
 

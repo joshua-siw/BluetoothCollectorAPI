@@ -42,6 +42,7 @@ export const passwordReset = (data: Partial<AuthRequest>): Promise<AxiosResponse
 export const signup = (data: SignupRequest): Promise<AxiosResponse> => post('Account/Start', data);
 
 http.interceptors.request.use(config => {
+	console.log('first token storage: ', localStorage.getItem(TOKEN_KEY));
 	if (config.headers) {
 		config.headers['Authorization'] = localStorage.getItem(TOKEN_KEY) || '';
 	}

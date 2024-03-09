@@ -1,4 +1,5 @@
-﻿using BluetoothCollectorAPI.Infrastructure.Identity.Models;
+﻿using System.Collections.Generic;
+using BluetoothCollectorAPI.Infrastructure.Identity.Models;
 using Microsoft.AspNetCore.Identity;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,40 +10,46 @@ namespace BluetoothCollectorAPI.Infrastructure.Identity.Seeds
     {
         public static async Task SeedAsync(UserManager<ApplicationUser> userManager)
         {
-            //Seed Default User
-            var defaultUser = new ApplicationUser
+            var usersData = new List<ApplicationUser>
             {
-                UserName = "Admin",
-                Email = "Admin@Admin.com",
-                Name = "Saman",
-                PhoneNumber = "09304241296",
-                EmailConfirmed = true,
-                PhoneNumberConfirmed = true
-            };
-            var testUser = new ApplicationUser
-            {
-                UserName = "test",
-                Email = "test@test.de",
-                Name = "test",
-                PhoneNumber = "030",
-                EmailConfirmed = true,
-                PhoneNumberConfirmed = true
-            };
-            if (userManager.Users.All(u => u.Id != defaultUser.Id))
-            {
-                var user = await userManager.FindByEmailAsync(defaultUser.Email);
-                var anotherUser= await userManager.FindByEmailAsync(testUser.Email);
-                if (user == null)
+                new ApplicationUser
                 {
-                    await userManager.CreateAsync(defaultUser, "Sam@12345");
-                    await userManager.AddToRoleAsync(defaultUser, "Admin");
-                }
-                if (anotherUser == null)
+                    UserName = "Admddin",
+                    Email = "admieen@example.com",
+                    Name = "AdminUser",
+                    PhoneNumber = "1234567890",
+                    EmailConfirmed = true,
+                    PhoneNumberConfirmed = true
+                },
+                new ApplicationUser
                 {
-                    await userManager.CreateAsync(testUser, "Start123!");
-                    await userManager.AddToRoleAsync(testUser, "Admin");
+                    UserName = "useddr1",
+                    Email = "useeer1@example.com",
+                    Name = "UserOne",
+                    PhoneNumber = "9876543210",
+                    EmailConfirmed = true,
+                    PhoneNumberConfirmed = true
+                },
+                new ApplicationUser
+                {
+                    UserName = "useddr232143243dwadwa2",
+                    Email = "joshua233ddddd3@example.com",
+                    Name = "UserddddddTwo",
+                    PhoneNumber = "5555555555",
+                    EmailConfirmed = true,
+                    PhoneNumberConfirmed = true
                 }
+            };
 
+            foreach (var userData in usersData)
+            {
+                var existingUser = await userManager.FindByEmailAsync(userData.Email);
+                if (existingUser != null) continue;
+                var result = await userManager.CreateAsync(userData, "Password123!");
+                if (result.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(userData, "ScanDevice");
+                }
             }
         }
     }
