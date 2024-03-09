@@ -3,6 +3,10 @@ export interface AuthRequest {
 	password: string;
 }
 
+export interface LogoutRequest {
+	token: string;
+}
+
 export interface SignupRequest extends AuthRequest {
 	gender: string;
 	username: string;

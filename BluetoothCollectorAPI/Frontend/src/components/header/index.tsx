@@ -30,8 +30,7 @@ export const Header: React.FunctionComponent = () => {
 						<NavLink to={Routes.LOGIN}>{t('Login')}</NavLink>
 					</li>
 				)}
-				{/*todo: check if token would suffice*/}
-				{!!token && (
+				{token && (
 					<>
 						<li>
 							<NavLink to={Routes.SETTINGS}>{t('Settings')}</NavLink>

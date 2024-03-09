@@ -14,7 +14,7 @@ export default defineConfig({
 		react(),
 		VitePWA({
 			registerType: 'autoUpdate',
-			includeAssets: ['favicon.ico'],
+			includeAssets: ['favicon.ico', 'bluetooth-icon.png'],
 			manifest: {
 				name: 'Bluetooth Collector',
 				short_name: 'Bluetooth Collector',

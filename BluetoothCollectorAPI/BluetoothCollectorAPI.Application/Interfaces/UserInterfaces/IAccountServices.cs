@@ -12,7 +12,7 @@ namespace BluetoothCollectorAPI.Application.Interfaces.UserInterfaces
         Task<BaseResult> ChangeUserName(ChangeUserNameRequest model);
         Task<BaseResult<AuthenticationResponse>> Authenticate(AuthenticationRequest request);
         Task<BaseResult<AuthenticationResponse>> AuthenticateByUserName(string username);
-        Task<BaseResult<AuthenticationResponse>> Logout(LogoutRequest request);
+        Task<BaseResult<LogoutResponse>> Logout(LogoutRequest request);
 
     }
 }

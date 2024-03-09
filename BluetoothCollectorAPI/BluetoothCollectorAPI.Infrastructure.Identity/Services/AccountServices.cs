@@ -104,9 +104,14 @@ namespace BluetoothCollectorAPI.Infrastructure.Identity.Services
             return new BaseResult<AuthenticationResponse>(response);
         }
         
-        Task<BaseResult<AuthenticationResponse>> IAccountServices.Logout(LogoutRequest request)
+        // todo: consider making synchronous
+        public async Task<BaseResult<LogoutResponse>> Logout(LogoutRequest request)
         {
-            throw new NotImplementedException();
+            var response = new LogoutResponse()
+            {
+                LoggedOut = true
+            };
+            return new BaseResult<LogoutResponse>(response);
         }
 
         public async Task<BaseResult<string>> RegisterGuestAccount()

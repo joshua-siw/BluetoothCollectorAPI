@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 
 import { handleItem, setThreshold } from './local-storage';
-import { AuthRequest, SignupRequest } from './interfaces';
+import { AuthRequest, LogoutRequest, SignupRequest } from './interfaces';
 import { API_URL, REFRESH_TOKEN_KEY, TOKEN_KEY, TOKEN_THRESHOLD_KEY } from './constants';
 
 export const http = axios.create({
@@ -34,9 +34,10 @@ export const patch = <T>(endpoint: string, data: T): Promise<AxiosResponse> =>
 
 export const login = (data: AuthRequest): Promise<AxiosResponse> => post('Account/Authenticate', data);
 
-export const logout = (): Promise<AxiosResponse> => post('Account/logout');
+export const logout = (data: LogoutRequest): Promise<AxiosResponse> => post('Account/logout', data);
 
-export const passwordReset = (data: Partial<AuthRequest>): Promise<AxiosResponse> => post('Account/changePassword', data);
+export const passwordReset = (data: Partial<AuthRequest>): Promise<AxiosResponse> =>
+	post('Account/changePassword', data);
 
 export const signup = (data: SignupRequest): Promise<AxiosResponse> => post('Account/Start', data);
 

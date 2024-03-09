@@ -4,7 +4,16 @@ import { put, call, takeLatest, CallEffect, PutEffect, ForkEffect } from 'redux-
 import { i18n } from '@i18n';
 import { AuthAction } from './interfaces';
 import { AuthActionType } from './enums';
-import { login, logout, setItems, saveLocale, removeItems, passwordReset, setDocumentLang } from '@utilities';
+import {
+	login,
+	logout,
+	setItems,
+	saveLocale,
+	removeItems,
+	passwordReset,
+	setDocumentLang,
+	LogoutRequest
+} from '@utilities';
 
 type AuthSagaEffect = Generator<CallEffect<any> | PutEffect<AuthAction>>;
 type AuthSagaForkEffect = Generator<ForkEffect<void>>;
@@ -14,7 +23,6 @@ export function* loginEffect(action: AnyAction): AuthSagaEffect {
 		const { email, password, redirect } = action.payload;
 		const responseData: any = yield call(login, { email, password });
 		const data = responseData.data.data;
-		console.log('login', data);
 		const payload = {
 			token: data.jwToken,
 			threshold: data.threshold || 3600,
@@ -43,15 +51,15 @@ export function* loginSaga(): AuthSagaForkEffect {
 
 export function* logoutEffect(action: AnyAction): AuthSagaEffect {
 	try {
-		yield call(logout);
+		// const token = localStorage.getItem('token') ?? '';
+		// const responseData: any = yield call(logout, { token });
+		// const payload = {
+		// 	token: token ? token : '',
+		// 	threshold: 0,
+		// 	refreshToken: ''
+		// };
 
-		const payload = {
-			token: '',
-			threshold: 0,
-			refreshToken: ''
-		};
-
-		yield put({ type: AuthActionType.LOGOUT_SUCCESS, payload });
+		// yield put({ type: AuthActionType.LOGOUT_SUCCESS, payload });
 		yield call(removeItems);
 
 		action.payload.redirect();
