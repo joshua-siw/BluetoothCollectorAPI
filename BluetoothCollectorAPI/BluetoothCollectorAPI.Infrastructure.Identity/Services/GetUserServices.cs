@@ -19,16 +19,17 @@ namespace BluetoothCollectorAPI.Infrastructure.Identity.Services
             var skip = (model.PageNumber - 1) * model.PageSize;
 
             var users = await identityContext.Users
+                .OrderBy(u => u.Name)
                 .Skip(skip)
                 .Take(model.PageSize)
-                .Select(p => new UserDto()
+                .Select(u => new UserDto()
                 {
-                    Name = p.Name,
-                    Email = p.Email,
-                    UserName = p.UserName,
-                    PhoneNumber = p.PhoneNumber,
-                    Id = p.Id,
-                    Created = p.Created,
+                    Name = u.Name,
+                    Email = u.Email,
+                    UserName = u.UserName,
+                    PhoneNumber = u.PhoneNumber,
+                    Id = u.Id,
+                    Created = u.Created,
                 }).ToListAsync();
 
             var result = new PaginationResponseDto<UserDto>(users, await identityContext.Users.CountAsync());

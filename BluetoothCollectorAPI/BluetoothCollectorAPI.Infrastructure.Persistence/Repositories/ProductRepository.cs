@@ -29,6 +29,8 @@ namespace BluetoothCollectorAPI.Infrastructure.Persistence.Repositories
             {
                 query = query.Where(p => p.Name.Contains(name));
             }
+            
+            query = query.OrderBy(p => p.Name);
 
             return await Paged(
                 query.Select(p => new ProductDto(p)),
