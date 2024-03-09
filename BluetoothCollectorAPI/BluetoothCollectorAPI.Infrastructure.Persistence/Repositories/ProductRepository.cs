@@ -21,7 +21,7 @@ namespace BluetoothCollectorAPI.Infrastructure.Persistence.Repositories
 
         }
 
-        public async Task<PagenationResponseDto<ProductDto>> GetPagedListAsync(int pageNumber, int pageSize, string name)
+        public async Task<PaginationResponseDto<ProductDto>> GetPagedListAsync(int pageNumber, int pageSize, string name)
         {
             var query = products.OrderBy(p => p.Created).AsQueryable();
 

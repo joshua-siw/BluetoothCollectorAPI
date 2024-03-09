@@ -31,7 +31,7 @@ namespace BluetoothCollectorAPI.Infrastructure.Identity.Services
                     Created = p.Created,
                 }).ToListAsync();
 
-            var result = new PagenationResponseDto<UserDto>(users, await identityContext.Users.CountAsync());
+            var result = new PaginationResponseDto<UserDto>(users, await identityContext.Users.CountAsync());
 
             return new PagedResponse<UserDto>(result, model.PageNumber, model.PageSize);
         }

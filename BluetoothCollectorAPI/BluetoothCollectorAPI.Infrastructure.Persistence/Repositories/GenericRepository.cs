@@ -46,7 +46,7 @@ namespace BluetoothCollectorAPI.Infrastructure.Persistence.Repositories
                  .ToListAsync();
         }
 
-        protected async Task<PagenationResponseDto<TEntity>> Paged<TEntity>(IQueryable<TEntity> query, int pageNumber, int pageSize)
+        protected async Task<PaginationResponseDto<TEntity>> Paged<TEntity>(IQueryable<TEntity> query, int pageNumber, int pageSize)
         {
             var count = await query.CountAsync();
 

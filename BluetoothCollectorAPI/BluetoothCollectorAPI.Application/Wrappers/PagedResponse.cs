@@ -20,7 +20,7 @@ namespace BluetoothCollectorAPI.Application.Wrappers
         {
         }
 
-        public PagedResponse(PagenationResponseDto<T> model, PagenationRequestParameter request)
+        public PagedResponse(PaginationResponseDto<T> model, PaginationRequestParameter request)
         {
             PageNumber = request.PageNumber;
             PageSize = request.PageSize;
@@ -31,7 +31,7 @@ namespace BluetoothCollectorAPI.Application.Wrappers
             this.Data = model.Data;
             this.Success = true;
         }
-        public PagedResponse(PagenationResponseDto<T> model, int pageNumber, int pageSize)
+        public PagedResponse(PaginationResponseDto<T> model, int pageNumber, int pageSize)
         {
             PageNumber = pageNumber;
             PageSize = pageSize;

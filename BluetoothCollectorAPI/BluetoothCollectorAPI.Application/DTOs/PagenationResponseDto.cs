@@ -2,9 +2,9 @@ using System.Collections.Generic;
 
 namespace BluetoothCollectorAPI.Application.DTOs
 {
-    public class PagenationResponseDto<T>
+    public class PaginationResponseDto<T>
     {
-        public PagenationResponseDto(List<T> data, int count)
+        public PaginationResponseDto(List<T> data, int count)
         {
             Data = data;
             Count = count;
