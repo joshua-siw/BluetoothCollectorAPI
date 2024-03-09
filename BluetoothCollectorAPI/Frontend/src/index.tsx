@@ -23,7 +23,7 @@ const renderRoot = (Application: any): void => {
 	);
 };
 
-removeItems();
+// removeItems();todo check why here
 
 store.dispatch({ type: AuthActionType.RESET_AUTH });
 
