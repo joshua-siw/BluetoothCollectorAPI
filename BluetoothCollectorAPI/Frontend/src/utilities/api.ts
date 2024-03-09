@@ -68,15 +68,15 @@ http.interceptors.response.use(
 				http.defaults.headers['Authorization'] = 'Bearer ' + refreshToken;
 			}
 
-			return post('auth/token')
+			return post('Account/RefreshToken')
 				.then(res => {
-					const { access_token, threshold } = res.data;
+					const { tokenThreshold, jwToken } = res.data.data;
 
-					handleItem(TOKEN_KEY, access_token);
-					handleItem(TOKEN_THRESHOLD_KEY, setThreshold(threshold));
+					handleItem(TOKEN_KEY, jwToken);
+					handleItem(TOKEN_THRESHOLD_KEY, setThreshold(tokenThreshold));
 
 					if (http.defaults.headers) {
-						http.defaults.headers['Authorization'] = access_token;
+						http.defaults.headers['Authorization'] = jwToken;
 					}
 
 					return http(originalRequest);
