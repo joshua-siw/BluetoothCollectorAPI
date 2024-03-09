@@ -1,0 +1,81 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{5BC68F7F-A047-4480-A268-8CAB33F7B1CE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{3A88D8D3-A482-49F2-80DD-3F38CECD57DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluetoothCollectorAPI.WebApi", "BluetoothCollectorAPI\BluetoothCollectorAPI.WebApi\BluetoothCollectorAPI.WebApi.csproj", "{832D0594-74C8-42B3-B03B-03F40DD88952}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{A6A0CF60-D2A4-4E2A-8700-3C38E5FAABD0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluetoothCollectorAPI.Application", "BluetoothCollectorAPI\BluetoothCollectorAPI.Application\BluetoothCollectorAPI.Application.csproj", "{60EE5B7F-23B0-4A43-9DB9-AC0DE88EE847}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluetoothCollectorAPI.Domain", "BluetoothCollectorAPI\BluetoothCollectorAPI.Domain\BluetoothCollectorAPI.Domain.csproj", "{08E30548-6D23-4452-8CDE-A176BF2617AA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{9BD78C3D-6F2B-42D1-8008-29D62486DC06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluetoothCollectorAPI.Infrastructure.FileManager", "BluetoothCollectorAPI\BluetoothCollectorAPI.Infrastructure.FileManager\BluetoothCollectorAPI.Infrastructure.FileManager.csproj", "{B6E310D8-2B3B-42CB-9559-A265C91D5274}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluetoothCollectorAPI.Infrastructure.Identity", "BluetoothCollectorAPI\BluetoothCollectorAPI.Infrastructure.Identity\BluetoothCollectorAPI.Infrastructure.Identity.csproj", "{198686CA-90E3-4EA4-A18B-6B4DEF94E543}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluetoothCollectorAPI.Infrastructure.Persistence", "BluetoothCollectorAPI\BluetoothCollectorAPI.Infrastructure.Persistence\BluetoothCollectorAPI.Infrastructure.Persistence.csproj", "{B3D904D8-F8B2-4CDF-8EE8-BD6AF7EA7BF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluetoothCollectorAPI.Infrastructure.Resources", "BluetoothCollectorAPI\BluetoothCollectorAPI.Infrastructure.Resources\BluetoothCollectorAPI.Infrastructure.Resources.csproj", "{A72CA32A-C774-4F32-AEC9-2D5A65D54E36}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{832D0594-74C8-42B3-B03B-03F40DD88952}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{832D0594-74C8-42B3-B03B-03F40DD88952}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{832D0594-74C8-42B3-B03B-03F40DD88952}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{832D0594-74C8-42B3-B03B-03F40DD88952}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60EE5B7F-23B0-4A43-9DB9-AC0DE88EE847}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60EE5B7F-23B0-4A43-9DB9-AC0DE88EE847}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60EE5B7F-23B0-4A43-9DB9-AC0DE88EE847}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60EE5B7F-23B0-4A43-9DB9-AC0DE88EE847}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08E30548-6D23-4452-8CDE-A176BF2617AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08E30548-6D23-4452-8CDE-A176BF2617AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08E30548-6D23-4452-8CDE-A176BF2617AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08E30548-6D23-4452-8CDE-A176BF2617AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6E310D8-2B3B-42CB-9559-A265C91D5274}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6E310D8-2B3B-42CB-9559-A265C91D5274}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6E310D8-2B3B-42CB-9559-A265C91D5274}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6E310D8-2B3B-42CB-9559-A265C91D5274}.Release|Any CPU.Build.0 = Release|Any CPU
+		{198686CA-90E3-4EA4-A18B-6B4DEF94E543}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{198686CA-90E3-4EA4-A18B-6B4DEF94E543}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{198686CA-90E3-4EA4-A18B-6B4DEF94E543}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{198686CA-90E3-4EA4-A18B-6B4DEF94E543}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3D904D8-F8B2-4CDF-8EE8-BD6AF7EA7BF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3D904D8-F8B2-4CDF-8EE8-BD6AF7EA7BF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3D904D8-F8B2-4CDF-8EE8-BD6AF7EA7BF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3D904D8-F8B2-4CDF-8EE8-BD6AF7EA7BF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A72CA32A-C774-4F32-AEC9-2D5A65D54E36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A72CA32A-C774-4F32-AEC9-2D5A65D54E36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A72CA32A-C774-4F32-AEC9-2D5A65D54E36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A72CA32A-C774-4F32-AEC9-2D5A65D54E36}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3A88D8D3-A482-49F2-80DD-3F38CECD57DC} = {5BC68F7F-A047-4480-A268-8CAB33F7B1CE}
+		{832D0594-74C8-42B3-B03B-03F40DD88952} = {3A88D8D3-A482-49F2-80DD-3F38CECD57DC}
+		{A6A0CF60-D2A4-4E2A-8700-3C38E5FAABD0} = {5BC68F7F-A047-4480-A268-8CAB33F7B1CE}
+		{60EE5B7F-23B0-4A43-9DB9-AC0DE88EE847} = {A6A0CF60-D2A4-4E2A-8700-3C38E5FAABD0}
+		{08E30548-6D23-4452-8CDE-A176BF2617AA} = {A6A0CF60-D2A4-4E2A-8700-3C38E5FAABD0}
+		{9BD78C3D-6F2B-42D1-8008-29D62486DC06} = {5BC68F7F-A047-4480-A268-8CAB33F7B1CE}
+		{B6E310D8-2B3B-42CB-9559-A265C91D5274} = {9BD78C3D-6F2B-42D1-8008-29D62486DC06}
+		{198686CA-90E3-4EA4-A18B-6B4DEF94E543} = {9BD78C3D-6F2B-42D1-8008-29D62486DC06}
+		{B3D904D8-F8B2-4CDF-8EE8-BD6AF7EA7BF1} = {9BD78C3D-6F2B-42D1-8008-29D62486DC06}
+		{A72CA32A-C774-4F32-AEC9-2D5A65D54E36} = {9BD78C3D-6F2B-42D1-8008-29D62486DC06}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4FF38F45-F783-442E-8528-6E76A74EAA83}
+	EndGlobalSection
+EndGlobal
