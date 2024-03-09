@@ -13,6 +13,7 @@ namespace BluetoothCollectorAPI.Application.Interfaces.UserInterfaces
         Task<BaseResult<AuthenticationResponse>> Authenticate(AuthenticationRequest request);
         Task<BaseResult<AuthenticationResponse>> AuthenticateByUserName(string username);
         Task<BaseResult<LogoutResponse>> Logout(LogoutRequest request);
+        Task<BaseResult<RefreshTokenResponse>> RefreshToken();
 
     }
 }

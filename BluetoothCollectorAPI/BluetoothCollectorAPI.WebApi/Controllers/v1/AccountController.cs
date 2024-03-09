@@ -15,7 +15,12 @@ namespace BluetoothCollectorAPI.WebApi.Controllers.v1
         [HttpPost]
         public async Task<BaseResult<AuthenticationResponse>> Authenticate(AuthenticationRequest request)
             => await accountServices.Authenticate(request);
+
+        [HttpGet, Authorize]
+        public async Task<BaseResult<RefreshTokenResponse>> RefreshToken()
+            => await accountServices.RefreshToken();
         
+        // todo: if used make get
         [HttpPost]
         public async Task<BaseResult<LogoutResponse>> Logout(LogoutRequest request)
             => await accountServices.Logout(request);

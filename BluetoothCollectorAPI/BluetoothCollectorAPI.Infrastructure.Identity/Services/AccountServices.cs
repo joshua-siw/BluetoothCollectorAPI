@@ -146,6 +146,24 @@ namespace BluetoothCollectorAPI.Infrastructure.Identity.Services
                 return result.ToString();
             }
         }
+
+        public async Task<BaseResult<RefreshTokenResponse>> RefreshToken()
+        {
+            var user = await userManager.FindByNameAsync(authenticatedUser.UserName);
+            if (user == null)
+            {
+                return new BaseResult<RefreshTokenResponse>(new Error(ErrorCode.NotFound, translator.GetString(TranslatorMessages.AccountMessages.Account_notfound_with_Email(authenticatedUser.UserName)), nameof(authenticatedUser.UserName)));
+            }
+            var jwToken = await GenerateJwToken(user);
+            var refreshToken = await GenerateRefreshJwToken(user);
+            RefreshTokenResponse response = new RefreshTokenResponse()
+            {
+                JWToken = new JwtSecurityTokenHandler().WriteToken(jwToken),
+                RefreshToken = new JwtSecurityTokenHandler().WriteToken(refreshToken),
+                TokenThreshold = jwtSettings.DurationInMinutes,
+            };
+            return new BaseResult<RefreshTokenResponse>(response);
+        }
         private async Task<JwtSecurityToken> GenerateJwToken(ApplicationUser user)
         {
             await userManager.UpdateSecurityStampAsync(user);
@@ -179,7 +197,7 @@ namespace BluetoothCollectorAPI.Infrastructure.Identity.Services
                 issuer: jwtSettings.Issuer,
                 audience: jwtSettings.Audience,
                 claims: await GetClaimsAsync(),
-                expires: DateTime.UtcNow.AddMinutes(jwtSettings.RefreshTokenDurationInDays),
+                expires: DateTime.UtcNow.AddDays(jwtSettings.RefreshTokenDurationInDays),
                 signingCredentials: signingCredentials);
             return jwtSecurityToken;
 
