@@ -2,6 +2,7 @@ import { TOKEN_KEY, REFRESH_TOKEN_KEY, TOKEN_THRESHOLD_KEY } from '@utilities';
 
 import { AuthActionType } from './enums';
 import { AuthState, AuthAction } from './interfaces';
+import { Role } from '../user/interfaces';
 
 export const initialState: AuthState = {
 	token: localStorage.getItem(TOKEN_KEY) || '',
@@ -12,7 +13,8 @@ export const initialState: AuthState = {
 	logoutError: '',
 	signupError: '',
 	refreshToken: localStorage.getItem(REFRESH_TOKEN_KEY) || '',
-	passwordResetError: ''
+	passwordResetError: '',
+	role: [Role.User]
 };
 
 export default (state = initialState, { type, payload }: AuthAction): AuthState => {

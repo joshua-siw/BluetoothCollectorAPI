@@ -35,7 +35,9 @@ export const Header: React.FunctionComponent = () => {
 						<li>
 							<NavLink to={Routes.SETTINGS}>{t('Settings')}</NavLink>
 						</li>
-
+						<li>
+							<NavLink to={Routes.USERS}>{t('Users')}</NavLink>
+						</li>
 						<li>
 							<Button
 								onClick={(): void => {

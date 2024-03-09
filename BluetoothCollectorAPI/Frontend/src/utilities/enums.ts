@@ -4,5 +4,6 @@ export enum Routes {
 	LOGIN = '/login',
 	SIGNUP = '/signup',
 	SETTINGS = '/settings',
-	PASSWORD_RESET = '/reset-password'
+	PASSWORD_RESET = '/reset-password',
+	USERS = '/users'
 }

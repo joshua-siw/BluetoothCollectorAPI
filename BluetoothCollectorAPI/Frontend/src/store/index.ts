@@ -5,9 +5,11 @@ import createSagaMiddleware, { Saga, SagaMiddleware } from 'redux-saga';
 import sagas from './sagas';
 import rootReducer from './root-reducer';
 import { initialState as auth } from '@store/branches/auth/reducer';
+import { initialState as user } from '@store/branches/user/reducer';
 
 const initialState = {
-	auth
+	auth,
+	user
 };
 
 export const sagaMiddleware: SagaMiddleware = createSagaMiddleware();

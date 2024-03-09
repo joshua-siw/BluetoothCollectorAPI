@@ -1,3 +1,4 @@
+import { Role } from '../user/interfaces';
 import { AuthActionType } from './enums';
 
 export interface AuthState {
@@ -10,6 +11,7 @@ export interface AuthState {
 	signupError: string;
 	refreshToken: string;
 	passwordResetError: string;
+	role: Role[];
 	[x: string]: any;
 }
 

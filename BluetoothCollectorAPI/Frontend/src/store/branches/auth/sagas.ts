@@ -4,16 +4,7 @@ import { put, call, takeLatest, CallEffect, PutEffect, ForkEffect } from 'redux-
 import { i18n } from '@i18n';
 import { AuthAction } from './interfaces';
 import { AuthActionType } from './enums';
-import {
-	login,
-	logout,
-	setItems,
-	saveLocale,
-	removeItems,
-	passwordReset,
-	setDocumentLang,
-	LogoutRequest
-} from '@utilities';
+import { login, setItems, saveLocale, removeItems, passwordReset, setDocumentLang } from '@utilities';
 
 type AuthSagaEffect = Generator<CallEffect<any> | PutEffect<AuthAction>>;
 type AuthSagaForkEffect = Generator<ForkEffect<void>>;
@@ -26,7 +17,8 @@ export function* loginEffect(action: AnyAction): AuthSagaEffect {
 		const payload = {
 			token: data.jwToken,
 			threshold: data.threshold || 3600,
-			refreshToken: data.refresh_token
+			refreshToken: data.refresh_token,
+			role: data.roles
 		};
 
 		yield put({ type: AuthActionType.LOGIN_SUCCESS, payload });
