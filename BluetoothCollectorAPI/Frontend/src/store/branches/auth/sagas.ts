@@ -12,10 +12,11 @@ type AuthSagaForkEffect = Generator<ForkEffect<void>>;
 export function* loginEffect(action: AnyAction): AuthSagaEffect {
 	try {
 		const { email, password, redirect } = action.payload;
-		const data: any = yield call(login, { email, password });
-
+		const responseData: any = yield call(login, { email, password });
+		const data = responseData.data.data;
+		console.log('login', data);
 		const payload = {
-			token: data.access_token,
+			token: data.jwToken,
 			threshold: data.threshold || 3600,
 			refreshToken: data.refresh_token
 		};
