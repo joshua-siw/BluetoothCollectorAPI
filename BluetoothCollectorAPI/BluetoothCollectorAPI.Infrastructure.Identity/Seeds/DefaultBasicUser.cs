@@ -14,7 +14,6 @@ namespace BluetoothCollectorAPI.Infrastructure.Identity.Seeds
             {
                 UserName = "Admin",
                 Email = "Admin@Admin.com",
-                Name = "Saman",
                 PhoneNumber = "09304241296",
                 EmailConfirmed = true,
                 PhoneNumberConfirmed = true

@@ -51,12 +51,12 @@ namespace BluetoothCollectorAPI.Infrastructure.Identity.Services
 
         public async Task<BaseResult<AuthenticationResponse>> Authenticate(AuthenticationRequest request)
         {
-            var user = await userManager.FindByNameAsync(request.UserName);
+            var user = await userManager.FindByEmailAsync(request.Email);
             if (user == null)
             {
-                return new BaseResult<AuthenticationResponse>(new Error(ErrorCode.NotFound, translator.GetString(TranslatorMessages.AccountMessages.Account_notfound_with_UserName(request.UserName)), nameof(request.UserName)));
+                return new BaseResult<AuthenticationResponse>(new Error(ErrorCode.NotFound, translator.GetString(TranslatorMessages.AccountMessages.Account_notfound_with_Email(request.Email)), nameof(request.Email)));
             }
-            var result = await signInManager.PasswordSignInAsync(user.UserName, request.Password, false, lockoutOnFailure: false);
+            var result = await signInManager.PasswordSignInAsync(user.Email, request.Password, false, lockoutOnFailure: false);
             if (!result.Succeeded)
             {
                 return new BaseResult<AuthenticationResponse>(new Error(ErrorCode.FieldDataInvalid, translator.GetString(TranslatorMessages.AccountMessages.Invalid_password()), nameof(request.Password)));
@@ -64,7 +64,7 @@ namespace BluetoothCollectorAPI.Infrastructure.Identity.Services
 
             var rolesList = await userManager.GetRolesAsync(user).ConfigureAwait(false);
 
-            var jwToken = await GenerateJwtToken(user);
+            var jwToken = await GenerateJwToken(user);
 
             AuthenticationResponse response = new AuthenticationResponse()
             {
@@ -84,12 +84,12 @@ namespace BluetoothCollectorAPI.Infrastructure.Identity.Services
             var user = await userManager.FindByNameAsync(username);
             if (user == null)
             {
-                return new BaseResult<AuthenticationResponse>(new Error(ErrorCode.NotFound, translator.GetString(TranslatorMessages.AccountMessages.Account_notfound_with_UserName(username)), nameof(username)));
+                return new BaseResult<AuthenticationResponse>(new Error(ErrorCode.NotFound, translator.GetString(TranslatorMessages.AccountMessages.Account_notfound_with_Email(username)), nameof(username)));
             }
 
             var rolesList = await userManager.GetRolesAsync(user).ConfigureAwait(false);
 
-            var jwToken = await GenerateJwtToken(user);
+            var jwToken = await GenerateJwToken(user);
 
             AuthenticationResponse response = new AuthenticationResponse()
             {
@@ -103,6 +103,7 @@ namespace BluetoothCollectorAPI.Infrastructure.Identity.Services
 
             return new BaseResult<AuthenticationResponse>(response);
         }
+        
         Task<BaseResult<AuthenticationResponse>> IAccountServices.Logout(LogoutRequest request)
         {
             throw new NotImplementedException();
@@ -137,7 +138,7 @@ namespace BluetoothCollectorAPI.Infrastructure.Identity.Services
                 return result.ToString();
             }
         }
-        private async Task<JwtSecurityToken> GenerateJwtToken(ApplicationUser user)
+        private async Task<JwtSecurityToken> GenerateJwToken(ApplicationUser user)
         {
             await userManager.UpdateSecurityStampAsync(user);
 
