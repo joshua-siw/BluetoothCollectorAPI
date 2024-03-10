@@ -9,7 +9,7 @@ export const initialState: UserState = {
 };
 
 const userReducer = (
-  state = initialState,
+  state: UserState | undefined = initialState,
   { type, payload }: UserAction
 ): UserState => {
   switch (type) {

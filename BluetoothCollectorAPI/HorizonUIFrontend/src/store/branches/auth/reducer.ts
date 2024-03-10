@@ -22,7 +22,7 @@ export const initialState: AuthState = {
 };
 
 const authReducer = (
-  state = initialState,
+  state: AuthState | undefined = initialState, // Set default value to initialState
   { type, payload }: AuthAction
 ): AuthState => {
   switch (type) {
