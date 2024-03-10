@@ -17,7 +17,6 @@ namespace BluetoothCollectorAPI.Infrastructure.Identity.Services
         public async Task<PagedResponse<UserDto>> GetPagedUsers(GetAllUsersRequest model)
         {
             var skip = (model.PageNumber - 1) * model.PageSize;
-
             var users = await identityContext.Users
                 .OrderBy(u => u.Name)
                 .Skip(skip)
@@ -30,6 +29,13 @@ namespace BluetoothCollectorAPI.Infrastructure.Identity.Services
                     PhoneNumber = u.PhoneNumber,
                     Id = u.Id,
                     Created = u.Created,
+                    Role = identityContext.UserRoles
+                        .Where(ur => ur.UserId == u.Id)
+                        .Join(identityContext.Roles,
+                            ur => ur.RoleId,
+                            r => r.Id,
+                            (ur, r) => r.Name)
+                        .FirstOrDefault() 
                 }).ToListAsync();
 
             var result = new PaginationResponseDto<UserDto>(users, await identityContext.Users.CountAsync());

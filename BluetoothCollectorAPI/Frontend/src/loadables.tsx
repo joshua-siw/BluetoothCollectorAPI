@@ -17,3 +17,6 @@ export const Home: LoadableComponent<any> = loadable(() => import('@containers/h
 
 // prettier-ignore
 export const NotFound: LoadableComponent<any> = loadable(() => import('@containers/not-found'), { fallback });
+
+// prettier-ignore
+export const Users: LoadableComponent<any> = loadable(() => import('@containers/users'), { fallback });

@@ -6,7 +6,7 @@ import { TOKEN_KEY, TOKEN_THRESHOLD_KEY, REFRESH_TOKEN_KEY } from './constants';
 export const setThreshold = (time: number): string =>
 	getUnixTime(
 		add(new Date(), {
-			minutes: time || 3600
+			minutes: time || 60
 		})
 	).toString();
 

@@ -12,9 +12,9 @@ export function* getUsersEffect(action: AnyAction): UserSagaEffect {
 	try {
 		const { pageNumber, pageSize } = action.payload;
 		const responseData: any = yield call(post, 'User/GetPagedListUser', { pageNumber, pageSize });
-		const data = responseData.data.data;
+		const data = responseData.data;
 		const payload = {
-			users: data.users,
+			users: data.data,
 			pageNumber: data.pageNumber,
 			pageSize: data.pageSize,
 			totalPages: data.totalPages,

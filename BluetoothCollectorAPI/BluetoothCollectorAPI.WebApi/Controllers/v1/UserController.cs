@@ -12,7 +12,7 @@ namespace BluetoothCollectorAPI.WebApi.Controllers.v1;
 [ApiVersion("1")]
 public class UserController(IGetUserServices getUserServices): BaseApiController
 {
-    [HttpPost, Authorize(Roles = "Admin")]
+    [HttpPost]
     public async Task<PagedResponse<UserDto>> GetPagedListUser(GetAllUsersRequest request)
         => await getUserServices.GetPagedUsers(request);
 }

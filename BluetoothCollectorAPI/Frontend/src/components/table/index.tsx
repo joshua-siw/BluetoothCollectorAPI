@@ -1,31 +1,25 @@
 import React from 'react';
-import './Table.scss';
+import { DataTable } from 'primereact/datatable';
+import { Column } from 'primereact/column';
+import './index.scss';
 
 interface TableProps {
 	data: any[];
-	columns: string[];
+	columns: IColumn[];
+}
+
+export interface IColumn {
+	field: string;
+	header: string;
 }
 
 const Table: React.FC<TableProps> = ({ data, columns }) => {
 	return (
-		<table className="custom-table">
-			<thead>
-				<tr>
-					{columns.map((column, index) => (
-						<th key={index}>{column}</th>
-					))}
-				</tr>
-			</thead>
-			<tbody>
-				{data.map((row, rowIndex) => (
-					<tr key={rowIndex}>
-						{columns.map((column, colIndex) => (
-							<td key={colIndex}>{row[column]}</td>
-						))}
-					</tr>
-				))}
-			</tbody>
-		</table>
+		<DataTable className="custom-table" value={data} stripedRows>
+			{columns.map((col, i) => (
+				<Column key={col.field} field={col.field} header={col.header} />
+			))}
+		</DataTable>
 	);
 };
 

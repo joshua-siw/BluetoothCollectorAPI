@@ -12,6 +12,7 @@ export const App = () => (
 		{!isLoggedIn() ? <Route path={AppRoutes.LOGIN} element={<Loadables.Login />} /> : null}
 		{!isLoggedIn() ? <Route path={AppRoutes.SIGNUP} element={<Loadables.Signup />} /> : null}
 		{!isLoggedIn() ? <Route path={AppRoutes.PASSWORD_RESET} element={<Loadables.PasswordReset />} /> : null}
+		{<Route path={AppRoutes.USERS} element={<Loadables.Users />} />}
 		<Route path="*" element={<Loadables.NotFound />} />
 	</Routes>
 );

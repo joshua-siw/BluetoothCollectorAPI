@@ -1,16 +1,14 @@
 import * as React from 'react';
-import { useTranslation } from 'react-i18next';
 
 import { Wrapper } from '@components';
 
 import './index.scss';
+import { UsersTable } from '@src/components/users-table';
 
 export const Users: React.FunctionComponent = () => {
-	const { t } = useTranslation();
-
 	return (
-		<Wrapper>
-			<div className="o-shell">{t('Users')}</div>
+		<Wrapper className="o-wrapper--fancy">
+			<UsersTable></UsersTable>
 		</Wrapper>
 	);
 };
