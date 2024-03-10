@@ -103,7 +103,7 @@ export function* passwordResetEffect(action: AnyAction): AuthSagaEffect {
 }
 
 export function* passwordResetSaga(): AuthSagaForkEffect {
-  yield takeLatest(AuthActionType.LOGIN_REQUEST, loginEffect);
+  yield takeLatest(AuthActionType.PASSWORD_RESET_REQUEST, passwordResetEffect); // Corrected usage
 }
 
 export function* signupEffect(action: AnyAction): AuthSagaEffect {

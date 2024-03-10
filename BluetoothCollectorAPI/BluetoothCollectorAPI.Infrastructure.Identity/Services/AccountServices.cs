@@ -64,8 +64,8 @@ namespace BluetoothCollectorAPI.Infrastructure.Identity.Services
 
             var rolesList = await userManager.GetRolesAsync(user).ConfigureAwait(false);
 
-            var jwToken = await GenerateJwToken(user);
             var refreshToken = await GenerateRefreshJwToken(user);
+            var jwToken = await GenerateJwToken(user);
             AuthenticationResponse response = new AuthenticationResponse()
             {
                 Id = user.Id.ToString(),
