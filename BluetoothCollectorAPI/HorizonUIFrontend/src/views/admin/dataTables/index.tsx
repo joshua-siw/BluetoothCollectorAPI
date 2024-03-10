@@ -38,7 +38,9 @@ import { UserActionType } from "store/enums";
 
 export default function Settings() {
   const dispatch = useDispatch();
-  const { loading, error, users } = useAppSelector((state) => state.user);
+  const { loading, error, users } = useAppSelector(
+    (state) => state.userReducer
+  );
 
   React.useEffect(() => {
     dispatch({
