@@ -56,29 +56,8 @@
     "baseUrl": "src",
     "paths": {
       "@assets/*": [
-        "./assetsassets/*"
-      ],
-      "@i18n": [
-        "./i18n"
-      ],
-      "@store/*": [
-        "./store/*"
-      ],
-      "@utilities": [
-        "./utilities"
-      ],
-      "@utilities/*": [
-        "./utilities/*"
-      ],
-      "@components": [
-        "./components"
-      ],
-      "@src/*": [
-        "./*"
-      ],
-      "@root/*": [
-        "./*"
-      ],
+        "./src/assetsassets/*"
+      ]
     },
   },
   "include": [
