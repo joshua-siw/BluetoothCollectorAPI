@@ -1,6 +1,6 @@
 {
-	"homepage": "https://horizon-ui.com/horizon-ui-chakra-ts",
-	"name": "horizon-ui-chakra-typescript",
+	"homepage": "https://bluetooth-collector",
+	"name": "bluetooth-collector",
 	"version": "1.1.0",
 	"private": true,
 	"dependencies": {
@@ -30,6 +30,7 @@
 		"react-custom-scrollbars-2": "^4.2.1",
 		"react-dom": "17.0.2",
 		"react-dropzone": "^12.0.4",
+		"react-hook-form": "^7.51.0",
 		"react-icons": "^4.3.1",
 		"react-is": "^18.0.0",
 		"react-redux": "8.1.3",
